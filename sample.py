@@ -1,41 +1,60 @@
-import tkinter as tk
-import requests
+from tkinter import *
 
-# Function to get weather data
-def get_weather(lat, lon):
-    api_key = 'b5508b18408a1951c9d1e43696eab784'  # Replace with your actual API key
-    url = f'http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}&units=metric'
-    response = requests.get(url)
-    data = response.json()
-    if data:
-        location = data['name']
-        weather = data['weather'][0]['description']
-        temp = data['main']['temp']
-        return f"Location: {location}\nWeather: {weather}\nTemperature: {temp}°C"
-    else:
-        return "Unable to fetch weather data."
 
-# Function to get the user's current location using an IP geolocation API
-def get_current_location():
-    response = requests.get('http://ip-api.com/json/')
-    data = response.json()
-    if data['status'] == 'success':
-        weather_info = get_weather(data['lat'], data['lon'])
-        result_label.config(text=weather_info)
-    else:
-        result_label.config(text="Unable to get location.")
 
-# Tkinter GUI Setup
-root = tk.Tk()
-root.title("Weather App")
-root.geometry("400x200")
+def __init__():
+    # create root window
+    root = Tk()
 
-# Label to display the weather information
-result_label = tk.Label(root, text="Fetching weather...", font=("Helvetica", 14))
-result_label.pack(pady=20)
+    # create a horizontal scrollbar (orient set to horizontal)
+    h = Scrollbar(root, orient='horizontal')
+    h.pack(side=BOTTOM, fill=X)
 
-# Automatically get weather data when the app starts
-get_current_location()
+    # create a vertical scrollbar (default is vertical)
+    v = Scrollbar(root)
+    v.pack(side=RIGHT, fill=Y)
 
-# Start the Tkinter event loop
-root.mainloop()
+    # create a Text widget with no line wrapping (wrap=NONE)
+    t = Text(root, width=40, height=20, wrap=NONE, xscrollcommand=h.set, yscrollcommand=v.set)
+
+    # insert some text into the Text widget
+    for i in range(100):
+        t.insert(END, f"This is line number {i + 1}\n")
+
+    t.pack(side=TOP, fill=BOTH, expand=True)
+
+    # configure the horizontal and vertical scrollbars
+    h.config(command=t.xview)
+    v.config(command=t.yview)
+
+    # Function to handle scrolling with the touchpad/mouse wheel
+    def on_mouse_wheel(event):
+        # For macOS, event.delta is very small, so no need to divide it
+        t.yview_scroll(-1 * int(event.delta / 120), "units")
+
+    # Function to scroll using the keyboard arrow keys
+    def on_key_press(event):
+        if event.keysym == "Up":
+            t.yview_scroll(-1, "units")  # Scroll up
+        elif event.keysym == "Down":
+            t.yview_scroll(1, "units")  # Scroll down
+        elif event.keysym == "Left":
+            t.xview_scroll(-1, "units")  # Scroll left
+        elif event.keysym == "Right":
+            t.xview_scroll(1, "units")  # Scroll right
+
+    # Bind mouse wheel event (for touchpad scrolling on macOS)
+    root.bind_all("<MouseWheel>", on_mouse_wheel)
+
+    # Bind arrow keys for scrolling
+    root.bind("<Up>", on_key_press)
+    root.bind("<Down>", on_key_press)
+    root.bind("<Left>", on_key_press)
+    root.bind("<Right>", on_key_press)
+
+    # Start the Tkinter event loop
+    root.mainloop()
+__init__()
+
+# create an object of ScrollBar class to run the application
+

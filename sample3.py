@@ -24,7 +24,6 @@ scroll=ttk.Scrollbar(window,orient="vertical",command=canvas.yview)
 scroll.place(relx=1,rely=0,relheight=1,anchor="ne")
 canvas.configure(yscrollcommand=scroll.set)
 
-
 #scroll x
 scroll1=ttk.Scrollbar(window,orient="horizontal",command=canvas.xview)
 scroll1.pack(side="bottom",fill="x")
