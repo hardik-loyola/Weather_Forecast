@@ -831,7 +831,7 @@ canvas.create_text(
 
 
 
-##########################################################
+
 current_day = datetime.now().strftime('%A')
 canvas.create_text(
     360.0,
@@ -841,7 +841,6 @@ canvas.create_text(
     fill="#221D1D",
     font=("Helvetic", 15)
 )
-##########################################################
 
 # Create search interface elements
 # Search bar
