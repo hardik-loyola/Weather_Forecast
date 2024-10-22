@@ -4,7 +4,7 @@ import requests
 # Function to convert a color name to an (R, G, B) tuple
 def name_to_rgb(color_name):
     r, g, b = root.winfo_rgb(color_name)  # Convert color name to RGB values using Tkinter's winfo_rgb
-    return (r // 256, g // 256, b // 256)  # Scale the values from 0-65535 to 0-255
+    return r // 256, g // 256, b // 256  # Scale the values from 0-65535 to 0-255
 
 # Function to convert an (R, G, B) tuple to hex color string
 def rgb_to_hex(rgb_color):
