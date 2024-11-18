@@ -816,6 +816,62 @@ def change_config(time1,weather1,time2,weather2,
         text=f"{day0}'s forecast",
         fill="#221D1D",
         font=("Helvetic", 15), tags="day")
+    canvas.delete('1st_day')
+    canvas.create_text(
+        705.0,
+        83.0,
+        anchor="nw",
+        text=day1,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags="1st_day")
+    canvas.delete('2nd_day')
+    canvas.create_text(
+        703.0,
+        143.0,
+        anchor="nw",
+        text=day2,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags="2nd_day")
+    canvas.delete('3rd_day')
+    canvas.create_text(
+        705.0,
+        200.0,
+        anchor="nw",
+        text=day3,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags="3rd_day")
+    canvas.delete('4th_day')
+    canvas.create_text(
+        705.0,
+        260.0,
+        anchor="nw",
+        text=day4,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags='4th_day')
+    canvas.delete('5th_day')
+    canvas.create_text(
+        705.0,
+        321.0,
+        anchor="nw",
+        text=day5,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags='5th_day')
+    canvas.delete('6th_day')
+    canvas.create_text(
+        705.0,
+        384.0,
+        anchor="nw",
+        text=day6,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags='6th_day')
+    canvas.delete('7th_day')
+    canvas.create_text(
+        705.0,
+        450.0,
+        anchor="nw",
+        text=day7,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags='7th_day')
     global global_images1
     global_images1.update({
         "clear_weather": PhotoImage(file=relative_to_assets("image_23.png")),
@@ -869,6 +925,7 @@ def change_config(time1,weather1,time2,weather2,
         canvas.itemconfig(image_5, image=global_images[day_weather6])
     if day_weather7 in global_images:
         canvas.itemconfig(image_8, image=global_images[day_weather7])
+
     
 
 
@@ -891,9 +948,3 @@ button_1.place(
 # Configure window properties and start main loop
 window.resizable(False, False)
 window.mainloop()
-
-
-
-
-
-
