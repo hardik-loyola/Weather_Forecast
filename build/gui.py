@@ -1,4 +1,3 @@
-
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Button, PhotoImage, messagebox
 import requests
@@ -7,7 +6,6 @@ import datetime as dt
 # Set up path handling for assets/images
 SCRIPT_DIR = Path(__file__).parent.absolute()
 ASSETS_PATH = SCRIPT_DIR / "assets"
-
 # Helper function to construct paths to asset files
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
@@ -659,14 +657,14 @@ if value[31] in global_images2:
 if value[33] in global_images2:
     image13=global_images2[value[33]]
 
-print(value)
+
 
 # 1st_day
 canvas.create_text(
     705.0,
     83.0,
     anchor="nw",
-    text=f"    {value[20]}\n{value[39]} {value[40]}",
+    text=f"    Today\n{value[39]} {value[40]}",
     fill="#221D1D",
     font=("Inter SemiBold", 12 * -1),tags="1st_day")
 image_image_15 = PhotoImage(
@@ -1221,7 +1219,7 @@ def change_config(time1,weather1,time2,weather2,
         705.0,
         83.0,
         anchor="nw",
-        text=f"    {day1}\n{week_temp_min1} {week_temp_max1}",
+        text=f"    Today\n{week_temp_min1} {week_temp_max1}",
         fill="#221D1D",
         font=("Inter SemiBold", 12 * -1), tags="1st_day")
     canvas.delete('2nd_day')
