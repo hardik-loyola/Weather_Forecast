@@ -14,7 +14,7 @@ def relative_to_assets(path: str) -> Path:
 
 
 window_0 = Tk()
-
+window_0.title("Weather App")
 window_0.geometry("691x417")
 window_0.configure(bg = "#B3CCF1")
 
@@ -221,40 +221,57 @@ def week_forecast0(response, weather_descriptions):
         data = response.json()
         # weather for current day
         day1 = (dt.datetime.utcfromtimestamp(data['daily'][0]["dt"]).strftime('%A'))
+        week_temp_min1 = f"Min:{round(data['hourly'][0]['temp'])}"
+        week_temp_max1 = f"Max:{round(data['daily'][0]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][0]['weather'][0]['description'] in descriptions:
                 day_weather1 = weather_type
         # weather for 2nd day
         day2 = (dt.datetime.utcfromtimestamp(data['daily'][1]["dt"]).strftime('%A'))
+        week_temp_min2 = f"Min:{round(data['daily'][1]['temp']['min'])}"
+        week_temp_max2 = f"Max:{round(data['daily'][1]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][1]['weather'][0]['description'] in descriptions:
                 day_weather2 = weather_type
         # weather for 3rd day
         day3 = (dt.datetime.utcfromtimestamp(data['daily'][2]["dt"]).strftime('%A'))
+        week_temp_min3 = f"Min:{round(data['daily'][2]['temp']['min'])}"
+        week_temp_max3 = f"Max:{round(data['daily'][2]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][2]['weather'][0]['description'] in descriptions:
                 day_weather3 = weather_type
         # weather for 4th day
         day4 = (dt.datetime.utcfromtimestamp(data['daily'][3]["dt"]).strftime('%A'))
+        week_temp_min4 = f"Min:{round(data['daily'][3]['temp']['min'])}"
+        week_temp_max4 = f"Max:{round(data['daily'][3]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][3]['weather'][0]['description'] in descriptions:
                 day_weather4 = weather_type
         # weather for 5th day
         day5 = (dt.datetime.utcfromtimestamp(data['daily'][4]["dt"]).strftime('%A'))
+        week_temp_min5 = f"Min:{round(data['daily'][4]['temp']['min'])}"
+        week_temp_max5 = f"Max:{round(data['daily'][4]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][4]['weather'][0]['description'] in descriptions:
                 day_weather5 = weather_type
         # weather for 6th day
         day6 = (dt.datetime.utcfromtimestamp(data['daily'][5]["dt"]).strftime('%A'))
+        week_temp_min6 = f"Min:{round(data['daily'][5]['temp']['min'])}"
+        week_temp_max6 = f"Max:{round(data['daily'][5]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][5]['weather'][0]['description'] in descriptions:
                 day_weather6 = (weather_type)
         # weather for 7th day
         day7 = (dt.datetime.utcfromtimestamp(data['daily'][6]["dt"]).strftime('%A'))
+        week_temp_min7 = f"Min:{round(data['daily'][6]['temp']['min'])}"
+        week_temp_max7 = f"Max:{round(data['daily'][6]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][6]['weather'][0]['description'] in descriptions:
                 day_weather7 = weather_type
-        return day1, day_weather1, day2, day_weather2, day3, day_weather3, day4, day_weather4, day5, day_weather5, day6, day_weather6, day7, day_weather7
+        return (
+        day1, day_weather1, day2, day_weather2, day3, day_weather3, day4, day_weather4, day5, day_weather5, day6,day_weather6, day7, day_weather7,
+        week_temp_min1, week_temp_max1, week_temp_min2, week_temp_max2, week_temp_min3, week_temp_max3, week_temp_min4,
+        week_temp_max4, week_temp_min5, week_temp_max5, week_temp_min6, week_temp_max6, week_temp_min7, week_temp_max7)
 
 
 def search_weather0(city0):
@@ -288,7 +305,7 @@ def search_weather0(city0):
     response = url0(lat, lon, api_key)
     time1, weather1, time2, weather2, time3, weather3, time4, weather4, time5, weather5, time6, weather6, pop, temp1, temp2, temp3, temp4, temp5, temp6, day0 = hourly0(
         response, weather_descriptions, )
-    day1, day_weather1, day2, day_weather2, day3, day_weather3, day4, day_weather4, day5, day_weather5, day6, day_weather6, day7, day_weather7 = week_forecast0(
+    day1, day_weather1, day2, day_weather2, day3, day_weather3, day4, day_weather4, day5, day_weather5, day6, day_weather6, day7, day_weather7,week_temp_min1, week_temp_max1, week_temp_min2, week_temp_max2, week_temp_min3, week_temp_max3, week_temp_min4,week_temp_max4, week_temp_min5, week_temp_max5, week_temp_min6, week_temp_max6, week_temp_min7, week_temp_max7 = week_forecast0(
         response, weather_descriptions)
     temp, wind_speed, humidity, sunrise, sunset = current0(response)
 
@@ -296,7 +313,8 @@ def search_weather0(city0):
     time1, weather1, time2, weather2, time3, weather3, time4, weather4, time5, weather5, time6, weather6, pop, temp1,
     temp2, temp3, temp4, temp5, temp6, day0, day1, day_weather1, day2, day_weather2, day3, day_weather3, day4,
     day_weather4, day5, day_weather5, day6, day_weather6, day7, day_weather7, temp, wind_speed, humidity, sunrise,
-    sunset)
+    sunset,week_temp_min1, week_temp_max1, week_temp_min2, week_temp_max2, week_temp_min3, week_temp_max3, week_temp_min4,
+        week_temp_max4, week_temp_min5, week_temp_max5, week_temp_min6, week_temp_max6, week_temp_min7, week_temp_max7)
     return value
 
 
@@ -641,12 +659,14 @@ if value[31] in global_images2:
 if value[33] in global_images2:
     image13=global_images2[value[33]]
 
-# Sunday
+print(value)
+
+# 1st_day
 canvas.create_text(
     705.0,
     83.0,
     anchor="nw",
-    text="Sunday",
+    text=f"    {value[20]}\n{value[39]} {value[40]}",
     fill="#221D1D",
     font=("Inter SemiBold", 12 * -1),tags="1st_day")
 image_image_15 = PhotoImage(
@@ -661,7 +681,7 @@ canvas.create_text(
     703.0,
     143.0,
     anchor="nw",
-    text="Monday",
+    text=f"    {value[22]}\n{value[41]} {value[42]}",
     fill="#221D1D",
     font=("Inter SemiBold", 12 * -1),tags="2nd_day")
 image_image_2 = PhotoImage(
@@ -676,7 +696,7 @@ canvas.create_text(
     705.0,
     200.0,
     anchor="nw",
-    text="Tuesday",
+    text=f"    {value[24]}\n{value[43]} {value[44]}",
     fill="#221D1D",
     font=("Inter SemiBold", 12 * -1),tags="3rd_day")
 image_image_12 = PhotoImage(
@@ -691,7 +711,7 @@ canvas.create_text(
     705.0,
     260.0,
     anchor="nw",
-    text="Wednesday",
+    text=f"    {value[26]}\n{value[45]} {value[46]}",
     fill="#221D1D",
     font=("Inter SemiBold", 12 * -1),tags='4th_day')
 image_image_3 = PhotoImage(
@@ -706,7 +726,7 @@ canvas.create_text(
     705.0,
     321.0,
     anchor="nw",
-    text="Thursday",
+    text=f"    {value[28]}\n{value[47]} {value[48]}",
     fill="#221D1D",
     font=("Inter SemiBold", 12 * -1),tags='5th_day')
 image_image_10 = PhotoImage(
@@ -721,7 +741,7 @@ canvas.create_text(
     705.0,
     384.0,
     anchor="nw",
-    text="Friday",
+    text=f"    {value[30]}\n{value[49]} {value[50]}",
     fill="#221D1D",
     font=("Inter SemiBold", 12 * -1),tags='6th_day')
 image_image_5 = PhotoImage(
@@ -734,9 +754,9 @@ image_5 = canvas.create_image(
 # Saturday
 canvas.create_text(
     705.0,
-    450.0,
+    440.0,
     anchor="nw",
-    text="Saturday",
+    text=f"    {value[32]}\n{value[51]} {value[52]}",
     fill="#221D1D",
     font=("Inter SemiBold", 12 * -1),tags='7th_day')
 image_image_8 = PhotoImage(
@@ -925,41 +945,61 @@ def week_forecast(response,weather_descriptions):
     if response.status_code == 200:
         data = response.json()
         # weather for current day
-        day1=(dt.datetime.utcfromtimestamp(data['daily'][0]["dt"]).strftime('%A'))
+        day1 = (dt.datetime.utcfromtimestamp(data['daily'][0]["dt"]).strftime('%A'))
+        week_temp_min1 = f"Min:{round(data['hourly'][0]['temp'])}"
+        week_temp_max1 = f"Max:{round(data['daily'][0]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][0]['weather'][0]['description'] in descriptions:
-                day_weather1= weather_type
+                day_weather1 = weather_type
         # weather for 2nd day
-        day2=(dt.datetime.utcfromtimestamp(data['daily'][1]["dt"]).strftime('%A'))
+        day2 = (dt.datetime.utcfromtimestamp(data['daily'][1]["dt"]).strftime('%A'))
+        week_temp_min2 = f"Min:{round(data['daily'][1]['temp']['min'])}"
+        week_temp_max2 = f"Max:{round(data['daily'][1]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][1]['weather'][0]['description'] in descriptions:
-                day_weather2= weather_type
+                day_weather2 = weather_type
         # weather for 3rd day
-        day3=(dt.datetime.utcfromtimestamp(data['daily'][2]["dt"]).strftime('%A'))
+        day3 = (dt.datetime.utcfromtimestamp(data['daily'][2]["dt"]).strftime('%A'))
+        week_temp_min3 = f"Min:{round(data['daily'][2]['temp']['min'])}"
+        week_temp_max3 = f"Max:{round(data['daily'][2]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][2]['weather'][0]['description'] in descriptions:
-                day_weather3= weather_type
+                day_weather3 = weather_type
         # weather for 4th day
-        day4=(dt.datetime.utcfromtimestamp(data['daily'][3]["dt"]).strftime('%A'))
+        day4 = (dt.datetime.utcfromtimestamp(data['daily'][3]["dt"]).strftime('%A'))
+        week_temp_min4 = f"Min:{round(data['daily'][3]['temp']['min'])}"
+        week_temp_max4 = f"Max:{round(data['daily'][3]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][3]['weather'][0]['description'] in descriptions:
-                day_weather4= weather_type
+                day_weather4 = weather_type
         # weather for 5th day
-        day5=(dt.datetime.utcfromtimestamp(data['daily'][4]["dt"]).strftime('%A'))
+        day5 = (dt.datetime.utcfromtimestamp(data['daily'][4]["dt"]).strftime('%A'))
+        week_temp_min5 = f"Min:{round(data['daily'][4]['temp']['min'])}"
+        week_temp_max5 = f"Max:{round(data['daily'][4]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][4]['weather'][0]['description'] in descriptions:
-                day_weather5= weather_type
+                day_weather5 = weather_type
         # weather for 6th day
-        day6=(dt.datetime.utcfromtimestamp(data['daily'][5]["dt"]).strftime('%A'))
+        day6 = (dt.datetime.utcfromtimestamp(data['daily'][5]["dt"]).strftime('%A'))
+        week_temp_min6 = f"Min:{round(data['daily'][5]['temp']['min'])}"
+        week_temp_max6 = f"Max:{round(data['daily'][5]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][5]['weather'][0]['description'] in descriptions:
-                day_weather6=(weather_type)
+                day_weather6 = (weather_type)
         # weather for 7th day
-        day7=(dt.datetime.utcfromtimestamp(data['daily'][6]["dt"]).strftime('%A'))
+        day7 = (dt.datetime.utcfromtimestamp(data['daily'][6]["dt"]).strftime('%A'))
+        week_temp_min7 = f"Min:{round(data['daily'][6]['temp']['min'])}"
+        week_temp_max7 = f"Max:{round(data['daily'][6]['temp']['max'])}"
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][6]['weather'][0]['description'] in descriptions:
-                day_weather7= weather_type
-        return day1,day_weather1,day2,day_weather2,day3,day_weather3,day4,day_weather4,day5,day_weather5,day6,day_weather6,day7,day_weather7
+                day_weather7 = weather_type
+        return (
+            day1, day_weather1, day2, day_weather2, day3, day_weather3, day4, day_weather4, day5, day_weather5, day6,
+            day_weather6, day7, day_weather7,
+            week_temp_min1, week_temp_max1, week_temp_min2, week_temp_max2, week_temp_min3, week_temp_max3,
+            week_temp_min4,
+            week_temp_max4, week_temp_min5, week_temp_max5, week_temp_min6, week_temp_max6, week_temp_min7,
+            week_temp_max7)
 
 
 def search_weather():
@@ -992,18 +1032,18 @@ def search_weather():
     lat,lon,city=get_lat_lon(api_key,city)
     response=url1(lat,lon,api_key)
     time1,weather1,time2,weather2,time3,weather3,time4,weather4,time5,weather5,time6,weather6,pop,temp1,temp2,temp3,temp4,temp5,temp6,day0=hourly(response,weather_descriptions,)
-    day1,day_weather1,day2,day_weather2,day3,day_weather3,day4,day_weather4,day5,day_weather5,day6,day_weather6,day7,day_weather7=week_forecast(response,weather_descriptions)
+    day1,day_weather1,day2,day_weather2,day3,day_weather3,day4,day_weather4,day5,day_weather5,day6,day_weather6,day7,day_weather7,week_temp_min1,week_temp_max1,week_temp_min2,week_temp_max2,week_temp_min3,week_temp_max3,week_temp_min4,week_temp_max4,week_temp_min5,week_temp_max5,week_temp_min6,week_temp_max6,week_temp_min7,week_temp_max7=week_forecast(response,weather_descriptions)
     temp,wind_speed,humidity,sunrise,sunset=current(response)
     change_config(time1, weather1, time2, weather2, time3, weather3, time4, weather4, time5, weather5, time6, weather6,
                   day1, day_weather1, day2, day_weather2, day3, day_weather3, day4, day_weather4, day5, day_weather5,
-                  day6, day_weather6, day7, day_weather7, temp, wind_speed, humidity, sunrise, sunset,city,pop,temp1,temp2,temp3,temp4,temp5,temp6,day0)
+                  day6, day_weather6, day7, day_weather7, temp, wind_speed, humidity, sunrise, sunset,city,pop,temp1,temp2,temp3,temp4,temp5,temp6,day0,week_temp_min1,week_temp_max1,week_temp_min2,week_temp_max2,week_temp_min3,week_temp_max3,week_temp_min4,week_temp_max4,week_temp_min5,week_temp_max5,week_temp_min6,week_temp_max6,week_temp_min7,week_temp_max7)
 global_images1 = {}
 global_images={}
 def change_config(time1,weather1,time2,weather2,
                   time3,weather3,time4,weather4,time5,
                   weather5,time6,weather6,day1,day_weather1,
                   day2,day_weather2,day3,day_weather3,day4,day_weather4,
-                  day5,day_weather5,day6,day_weather6,day7,day_weather7,temp,wind_speed,humidity,sunrise,sunset,city,pop,temp1,temp2,temp3,temp4,temp5,temp6,day0):
+                  day5,day_weather5,day6,day_weather6,day7,day_weather7,temp,wind_speed,humidity,sunrise,sunset,city,pop,temp1,temp2,temp3,temp4,temp5,temp6,day0,week_temp_min1,week_temp_max1,week_temp_min2,week_temp_max2,week_temp_min3,week_temp_max3,week_temp_min4,week_temp_max4,week_temp_min5,week_temp_max5,week_temp_min6,week_temp_max6,week_temp_min7,week_temp_max7):
 
     canvas.delete("temperature_text")  # Delete previous temperature text
     canvas.create_text(
@@ -1181,7 +1221,7 @@ def change_config(time1,weather1,time2,weather2,
         705.0,
         83.0,
         anchor="nw",
-        text=day1,
+        text=f"    {day1}\n{week_temp_min1} {week_temp_max1}",
         fill="#221D1D",
         font=("Inter SemiBold", 12 * -1), tags="1st_day")
     canvas.delete('2nd_day')
@@ -1189,7 +1229,7 @@ def change_config(time1,weather1,time2,weather2,
         703.0,
         143.0,
         anchor="nw",
-        text=day2,
+        text=f"    {day2}\n{week_temp_min2} {week_temp_max2}",
         fill="#221D1D",
         font=("Inter SemiBold", 12 * -1), tags="2nd_day")
     canvas.delete('3rd_day')
@@ -1197,7 +1237,7 @@ def change_config(time1,weather1,time2,weather2,
         705.0,
         200.0,
         anchor="nw",
-        text=day3,
+        text=f"    {day3}\n{week_temp_min3} {week_temp_max3}",
         fill="#221D1D",
         font=("Inter SemiBold", 12 * -1), tags="3rd_day")
     canvas.delete('4th_day')
@@ -1205,7 +1245,7 @@ def change_config(time1,weather1,time2,weather2,
         705.0,
         260.0,
         anchor="nw",
-        text=day4,
+        text=f"    {day4}\n{week_temp_min4} {week_temp_max4}",
         fill="#221D1D",
         font=("Inter SemiBold", 12 * -1), tags='4th_day')
     canvas.delete('5th_day')
@@ -1213,7 +1253,7 @@ def change_config(time1,weather1,time2,weather2,
         705.0,
         321.0,
         anchor="nw",
-        text=day5,
+        text=f"    {day5}\n{week_temp_min5} {week_temp_max5}",
         fill="#221D1D",
         font=("Inter SemiBold", 12 * -1), tags='5th_day')
     canvas.delete('6th_day')
@@ -1221,7 +1261,7 @@ def change_config(time1,weather1,time2,weather2,
         705.0,
         384.0,
         anchor="nw",
-        text=day6,
+        text=f"    {day6}\n{week_temp_min6} {week_temp_max6}",
         fill="#221D1D",
         font=("Inter SemiBold", 12 * -1), tags='6th_day')
     canvas.delete('7th_day')
@@ -1229,7 +1269,7 @@ def change_config(time1,weather1,time2,weather2,
         705.0,
         450.0,
         anchor="nw",
-        text=day7,
+        text=f"    {day7}\n{week_temp_min7} {week_temp_max7}",
         fill="#221D1D",
         font=("Inter SemiBold", 12 * -1), tags='7th_day')
     global global_images1
