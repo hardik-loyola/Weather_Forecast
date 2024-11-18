@@ -1,6 +1,6 @@
 # Import required libraries
 from pathlib import Path
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import Tk, Canvas, Entry, Button, PhotoImage
 import requests
 import datetime as dt
 
@@ -51,9 +51,9 @@ image_16 = canvas.create_image(
 # 12 AM section
 canvas.create_text(
     70.0,
-    550.0,
+    520.0,
     anchor="nw",
-    text="1st",
+    text="12am",
     fill="#221D1D",
     font=("Inter SemiBold", 12 * -1),tags="1st")
 canvas.create_text(
@@ -65,16 +65,16 @@ canvas.create_text(
     font=("Inter SemiBold", 12 * -1),
     tags="12am_temp")
 image_image_1 = PhotoImage(
-    file=relative_to_assets("image_2.png"))
+    file=relative_to_assets("image_1.png"))
 image_1 = canvas.create_image(
     81.0,
-    600.0,
+    590.0,
     image=image_image_1)
 
 # 4 AM section
 canvas.create_text(
     207.0,
-    550.0,
+    520.0,
     anchor="nw",
     text="4 am",
     fill="#221D1D",
@@ -88,16 +88,16 @@ canvas.create_text(
     font=("Inter SemiBold", 12 * -1),
     tags="4am_temp")
 image_image_11 = PhotoImage(
-    file=relative_to_assets("image_12.png"))
+    file=relative_to_assets("image_11.png"))
 image_11 = canvas.create_image(
     223.0,
-    600.0,
+    590.0,
     image=image_image_11)
 
 # 8 AM section
 canvas.create_text(
     350.0,
-    550.0,
+    520.0,
     anchor="nw",
     text="8 am",
     fill="#221D1D",
@@ -114,13 +114,13 @@ image_image_4 = PhotoImage(
     file=relative_to_assets("image_5.png"))
 image_4 = canvas.create_image(
     363.0,
-    600.0,
+    590.0,
     image=image_image_4)
 
 # 12 PM section
 canvas.create_text(
     480.0,
-    550.0,
+    520.0,
     anchor="nw",
     text="12 pm",
     fill="#221D1D",
@@ -137,13 +137,13 @@ image_image_9 = PhotoImage(
     file=relative_to_assets("image_10.png"))
 image_9 = canvas.create_image(
     499.0,
-    600.0,
+    590.0,
     image=image_image_9)
 
 # 4 PM section
 canvas.create_text(
     615.0,
-    550.0,
+    520.0,
     anchor="nw",
     text="4 pm",
     fill="#221D1D",
@@ -160,13 +160,13 @@ image_image_7 = PhotoImage(
     file=relative_to_assets("image_8.png"))
 image_7 = canvas.create_image(
     623.0,
-    600.0,
+    590.0,
     image=image_image_7)
 
 # 8 PM section
 canvas.create_text(
     735.0,
-    550.0,
+    520.0,
     anchor="nw",
     text="8 pm",
     fill="#221D1D",
@@ -184,7 +184,7 @@ image_image_6 = PhotoImage(
 image_image_6 = image_image_6.subsample(2)
 image_6 = canvas.create_image(
     750.0,
-    600.0,
+    590.0,
     image=image_image_6)
 
 # Create sunset information display
@@ -297,7 +297,7 @@ canvas.create_text(
     anchor="nw",
     text="Sunday",
     fill="#221D1D",
-    font=("Inter SemiBold", 12 * -1))
+    font=("Inter SemiBold", 12 * -1),tags="1st_day")
 image_image_15 = PhotoImage(
     file=relative_to_assets("image_15.png"))
 image_15 = canvas.create_image(
@@ -312,7 +312,7 @@ canvas.create_text(
     anchor="nw",
     text="Monday",
     fill="#221D1D",
-    font=("Inter SemiBold", 12 * -1))
+    font=("Inter SemiBold", 12 * -1),tags="2nd_day")
 image_image_2 = PhotoImage(
     file=relative_to_assets("image_2.png"))
 image_2 = canvas.create_image(
@@ -327,7 +327,7 @@ canvas.create_text(
     anchor="nw",
     text="Tuesday",
     fill="#221D1D",
-    font=("Inter SemiBold", 12 * -1))
+    font=("Inter SemiBold", 12 * -1),tags="3rd_day")
 image_image_12 = PhotoImage(
     file=relative_to_assets("image_12.png"))
 image_12 = canvas.create_image(
@@ -342,7 +342,7 @@ canvas.create_text(
     anchor="nw",
     text="Wednesday",
     fill="#221D1D",
-    font=("Inter SemiBold", 12 * -1))
+    font=("Inter SemiBold", 12 * -1),tags='4th_day')
 image_image_3 = PhotoImage(
     file=relative_to_assets("image_3.png"))
 image_3 = canvas.create_image(
@@ -357,7 +357,7 @@ canvas.create_text(
     anchor="nw",
     text="Thursday",
     fill="#221D1D",
-    font=("Inter SemiBold", 12 * -1))
+    font=("Inter SemiBold", 12 * -1),tags='5th_day')
 image_image_10 = PhotoImage(
     file=relative_to_assets("image_10.png"))
 image_10 = canvas.create_image(
@@ -372,7 +372,7 @@ canvas.create_text(
     anchor="nw",
     text="Friday",
     fill="#221D1D",
-    font=("Inter SemiBold", 12 * -1))
+    font=("Inter SemiBold", 12 * -1),tags='6th_day')
 image_image_5 = PhotoImage(
     file=relative_to_assets("image_5.png"))
 image_5 = canvas.create_image(
@@ -387,7 +387,7 @@ canvas.create_text(
     anchor="nw",
     text="Saturday",
     fill="#221D1D",
-    font=("Inter SemiBold", 12 * -1))
+    font=("Inter SemiBold", 12 * -1),tags='7th_day')
 image_image_8 = PhotoImage(
     file=relative_to_assets("image_8.png"))
 image_8 = canvas.create_image(
@@ -431,11 +431,11 @@ canvas.create_text(
 current_day = dt.datetime.now().strftime('%A')
 canvas.create_text(
     360.0,
-    500.0,
+    480.0,
     anchor="nw",
     text=f"{current_day}'s forecast",
     fill="#221D1D",
-    font=("Helvetic", 15)
+    font=("Helvetic", 15),tags="day"
 )
 
 # Create search interface elements
@@ -511,51 +511,54 @@ def current(response):
 
 def hourly(response,weather_descriptions):
     if response.status_code == 200:
+
         data = response.json()
         #current time
         time_sam1=int(data['hourly'][0]['dt'])+int(data["timezone_offset"])
-        time1=dt.datetime.utcfromtimestamp(time_sam1).strftime('%I:%M %p')
-        temp1=round(data['hourly'][0]['temp'])
+        time1=dt.datetime.utcfromtimestamp(time_sam1).strftime('%I %p').strip("0")
+        temp1=str(round(data['hourly'][0]['temp']))+"°F"
+        #day
+        day0 =dt.datetime.utcfromtimestamp(time_sam1).strftime('%A')
         for weather_type, descriptions in weather_descriptions.items():
             if data['hourly'][0]['weather'][0]['description'] in descriptions:
                 weather1=weather_type
         #5th hour
         time_sam2 = int(data['hourly'][4]['dt']) + int(data["timezone_offset"])
-        time2=dt.datetime.utcfromtimestamp(time_sam2).strftime('%I:%M %p')
-        temp2 = round(data['hourly'][4]['temp'])
+        time2=dt.datetime.utcfromtimestamp(time_sam2).strftime('%I %p').strip("0")
+        temp2 = str(round(data['hourly'][4]['temp']))+"°F"
         for weather_type, descriptions in weather_descriptions.items():
             if data['hourly'][4]['weather'][0]['description'] in descriptions:
                 weather2=weather_type
         #9th hour
         time_sam3 = int(data['hourly'][8]['dt']) + int(data["timezone_offset"])
-        time3=(dt.datetime.utcfromtimestamp(time_sam3).strftime('%I:%M %p'))
-        temp3 = round(data['hourly'][8]['temp'])
+        time3=(dt.datetime.utcfromtimestamp(time_sam3).strftime('%I %p').strip("0"))
+        temp3 = str(round(data['hourly'][8]['temp']))+'°F'
         for weather_type, descriptions in weather_descriptions.items():
             if data['hourly'][9]['weather'][0]['description'] in descriptions:
-                weather3=(weather_type)
+                weather3= weather_type
         #13th hour
         time_sam4 = int(data['hourly'][12]['dt']) + int(data["timezone_offset"])
-        time4=(dt.datetime.utcfromtimestamp(time_sam4).strftime('%I:%M %p'))
-        temp4 = round(data['hourly'][12]['temp'])
+        time4=(dt.datetime.utcfromtimestamp(time_sam4).strftime('%I %p').strip("0"))
+        temp4 = str(round(data['hourly'][12]['temp']))+'°F'
         for weather_type, descriptions in weather_descriptions.items():
             if data['hourly'][12]['weather'][0]['description'] in descriptions:
-                weather4=(weather_type)
+                weather4= weather_type
         #17th hour
         time_sam5 = int(data['hourly'][16]['dt']) + int(data["timezone_offset"])
-        time5=(dt.datetime.utcfromtimestamp(time_sam5).strftime('%I:%M %p'))
-        temp5 = round(data['hourly'][16]['temp'])
+        time5=(dt.datetime.utcfromtimestamp(time_sam5).strftime('%I %p').strip("0"))
+        temp5 = str(round(data['hourly'][16]['temp']))+'°F'
         for weather_type, descriptions in weather_descriptions.items():
             if data['hourly'][16]['weather'][0]['description'] in descriptions:
-                weather5=(weather_type)
+                weather5= weather_type
         #21th hour
         time_sam6 = int(data['hourly'][20]['dt']) + int(data["timezone_offset"])
-        time6=(dt.datetime.utcfromtimestamp(time_sam6).strftime('%I:%M %p'))
-        temp6 = round(data['hourly'][20]['temp'])
+        time6=(dt.datetime.utcfromtimestamp(time_sam6).strftime('%I %p').strip("0"))
+        temp6 = str(round(data['hourly'][20]['temp']))+'°F'
         for weather_type, descriptions in weather_descriptions.items():
             if data['hourly'][20]['weather'][0]['description'] in descriptions:
-                weather6=(weather_type)
+                weather6= weather_type
         chance_of_rain=str(data['hourly'][0]['pop'])+"%"
-        return time1,weather1,time2,weather2,time3,weather3,time4,weather4,time5,weather5,time6,weather6,chance_of_rain,temp1,temp2,temp3,temp4,temp5,temp6
+        return time1,weather1,time2,weather2,time3,weather3,time4,weather4,time5,weather5,time6,weather6,chance_of_rain,temp1,temp2,temp3,temp4,temp5,temp6,day0
 
 
 def week_forecast(response,weather_descriptions):
@@ -565,27 +568,27 @@ def week_forecast(response,weather_descriptions):
         day1=(dt.datetime.utcfromtimestamp(data['daily'][0]["dt"]).strftime('%A'))
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][0]['weather'][0]['description'] in descriptions:
-                day_weather1=(weather_type)
+                day_weather1= weather_type
         # weather for 2nd day
         day2=(dt.datetime.utcfromtimestamp(data['daily'][1]["dt"]).strftime('%A'))
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][1]['weather'][0]['description'] in descriptions:
-                day_weather2=(weather_type)
+                day_weather2= weather_type
         # weather for 3rd day
         day3=(dt.datetime.utcfromtimestamp(data['daily'][2]["dt"]).strftime('%A'))
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][2]['weather'][0]['description'] in descriptions:
-                day_weather3=(weather_type)
+                day_weather3= weather_type
         # weather for 4th day
         day4=(dt.datetime.utcfromtimestamp(data['daily'][3]["dt"]).strftime('%A'))
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][3]['weather'][0]['description'] in descriptions:
-                day_weather4=(weather_type)
+                day_weather4= weather_type
         # weather for 5th day
         day5=(dt.datetime.utcfromtimestamp(data['daily'][4]["dt"]).strftime('%A'))
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][4]['weather'][0]['description'] in descriptions:
-                day_weather5=(weather_type)
+                day_weather5= weather_type
         # weather for 6th day
         day6=(dt.datetime.utcfromtimestamp(data['daily'][5]["dt"]).strftime('%A'))
         for weather_type, descriptions in weather_descriptions.items():
@@ -595,14 +598,15 @@ def week_forecast(response,weather_descriptions):
         day7=(dt.datetime.utcfromtimestamp(data['daily'][6]["dt"]).strftime('%A'))
         for weather_type, descriptions in weather_descriptions.items():
             if data['daily'][6]['weather'][0]['description'] in descriptions:
-                day_weather7=(weather_type)
+                day_weather7= weather_type
         return day1,day_weather1,day2,day_weather2,day3,day_weather3,day4,day_weather4,day5,day_weather5,day6,day_weather6,day7,day_weather7
 
 
 def search_weather():
     weather_descriptions = {
         "clear_weather": ["clear sky"],
-        "cloudy_weather": ["few clouds", "scattered clouds", "broken clouds", "overcast clouds"],
+        "cloudy_weather": ["overcast clouds"],
+        "partly_cloudy_weather":["few clouds","scattered clouds","broken clouds"],
         "rain": ["moderate rain", "heavy intensity rain", "very heavy rain", "extreme rain",
                  "freezing rain", "shower rain", "heavy intensity shower rain", "ragged shower rain"],
         "snow": ["snow", "heavy snow", "sleet", "light shower sleet", "shower sleet",
@@ -627,17 +631,20 @@ def search_weather():
     url_lat = f'http://api.openweathermap.org/geo/1.0/direct?q={city}&appid={api_key}'
     lat,lon=get_lat_lon(url_lat)
     response=url1(lat,lon,api_key)
-    time1,weather1,time2,weather2,time3,weather3,time4,weather4,time5,weather5,time6,weather6,pop,temp1,temp2,temp3,temp4,temp5,temp6=hourly(response,weather_descriptions,)
+    time1,weather1,time2,weather2,time3,weather3,time4,weather4,time5,weather5,time6,weather6,pop,temp1,temp2,temp3,temp4,temp5,temp6,day0=hourly(response,weather_descriptions,)
     day1,day_weather1,day2,day_weather2,day3,day_weather3,day4,day_weather4,day5,day_weather5,day6,day_weather6,day7,day_weather7=week_forecast(response,weather_descriptions)
     temp,wind_speed,humidity,sunrise,sunset=current(response)
     change_config(time1, weather1, time2, weather2, time3, weather3, time4, weather4, time5, weather5, time6, weather6,
                   day1, day_weather1, day2, day_weather2, day3, day_weather3, day4, day_weather4, day5, day_weather5,
-                  day6, day_weather6, day7, day_weather7, temp, wind_speed, humidity, sunrise, sunset,city,pop,temp1,temp2,temp3,temp4,temp5,temp6)
+                  day6, day_weather6, day7, day_weather7, temp, wind_speed, humidity, sunrise, sunset,city,pop,temp1,temp2,temp3,temp4,temp5,temp6,day0)
+global_images1 = {}
+global_images={}
 def change_config(time1,weather1,time2,weather2,
                   time3,weather3,time4,weather4,time5,
                   weather5,time6,weather6,day1,day_weather1,
                   day2,day_weather2,day3,day_weather3,day4,day_weather4,
-                  day5,day_weather5,day6,day_weather6,day7,day_weather7,temp,wind_speed,humidity,sunrise,sunset,city,pop,temp1,temp2,temp3,temp4,temp5,temp6):
+                  day5,day_weather5,day6,day_weather6,day7,day_weather7,temp,wind_speed,humidity,sunrise,sunset,city,pop,temp1,temp2,temp3,temp4,temp5,temp6,day0):
+
     canvas.delete("temperature_text")  # Delete previous temperature text
     canvas.create_text(
         265.0,
@@ -652,7 +659,7 @@ def change_config(time1,weather1,time2,weather2,
         370.0,
         215.0,
         anchor="nw",
-        text=city,
+        text=city.capitalize(),
         fill="#221D1D",
         font=("Inter SemiBold", 20 * -1),
         tags="location_text")
@@ -661,7 +668,7 @@ def change_config(time1,weather1,time2,weather2,
         203.0,
         332.0,
         anchor="nw",
-        text=(humidity),
+        text=humidity,
         fill="#221D1D",
         font=("Inter SemiBold", 12 * -1),
         tags="humidity_txt")
@@ -700,6 +707,171 @@ def change_config(time1,weather1,time2,weather2,
         font=("Inter SemiBold", 20 * -1),
         tags="rain_chance_txt")
     canvas.delete("1st")
+    canvas.create_text(
+        70.0,
+        520.0,
+        anchor="nw",
+        text=time1,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags="1st")
+    canvas.delete('12am_temp')
+    canvas.create_text(
+        70.0,
+        633.0,
+        anchor="nw",
+        text=temp1,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1),
+        tags="12am_temp")
+    canvas.delete('2nd')
+    canvas.create_text(
+        207.0,
+        520.0,
+        anchor="nw",
+        text=time2,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags='2nd')
+    canvas.delete('4am_temp')
+    canvas.create_text(
+        207.0,
+        633.0,
+        anchor="nw",
+        text=temp2,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1),
+        tags="4am_temp")
+    canvas.delete('3rd')
+    canvas.create_text(
+        350.0,
+        520.0,
+        anchor="nw",
+        text=time3,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags='3rd')
+    canvas.delete('8am_temp')
+    canvas.create_text(
+        352.0,
+        633.0,
+        anchor="nw",
+        text=temp3,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1),
+        tags="8am_temp")
+    canvas.delete('4th')
+    canvas.create_text(
+        480.0,
+        520.0,
+        anchor="nw",
+        text=time4,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags='4th')
+    canvas.delete('12pm_temp')
+    canvas.create_text(
+        483.0,
+        633.0,
+        anchor="nw",
+        text=temp4,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1),
+        tags="12pm_temp")
+    canvas.delete('5th')
+    canvas.create_text(
+        615.0,
+        520.0,
+        anchor="nw",
+        text=time5,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags='5th')
+    canvas.delete('4pm_temp')
+    canvas.create_text(
+        615.0,
+        633.0,
+        anchor="nw",
+        text=temp5,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1),
+        tags="4pm_temp")
+    canvas.delete('6th')
+    canvas.create_text(
+        735.0,
+        520.0,
+        anchor="nw",
+        text=time6,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1), tags='6th')
+    canvas.delete("8pm_temp")
+    canvas.create_text(
+        735.0,
+        633.0,
+        anchor="nw",
+        text=temp6,
+        fill="#221D1D",
+        font=("Inter SemiBold", 12 * -1),
+        tags="8pm_temp")
+    canvas.delete('day')
+    canvas.create_text(
+        360.0,
+        480.0,
+        anchor="nw",
+        text=f"{day0}'s forecast",
+        fill="#221D1D",
+        font=("Helvetic", 15), tags="day")
+    global global_images1
+    global_images1.update({
+        "clear_weather": PhotoImage(file=relative_to_assets("image_23.png")),
+        "cloudy_weather": PhotoImage(file=relative_to_assets("image_1.png")),
+        "partly_cloudy_weather": PhotoImage(file=relative_to_assets("image_7.png")),
+        "rain": PhotoImage(file=relative_to_assets("image_4.png")),
+        "snow": PhotoImage(file=relative_to_assets("image_27.png")),
+        "thunderstorm": PhotoImage(file=relative_to_assets("image_9.png")),
+        "light_rain": PhotoImage(file=relative_to_assets("image_20.png")),
+        "light_snow": PhotoImage(file=relative_to_assets("image_24.png")),
+        "fog": PhotoImage(file=relative_to_assets("image_19.png")),
+        "tornado": PhotoImage(file=relative_to_assets("image_28.png")),
+    })
+
+    if weather1 in global_images1:
+        canvas.itemconfig(image_1, image=global_images1[weather1])
+    if weather2 in global_images1:
+        canvas.itemconfig(image_11, image=global_images1[weather2])
+    if weather3 in global_images1:
+        canvas.itemconfig(image_4, image=global_images1[weather3])
+    if weather4 in global_images1:
+        canvas.itemconfig(image_9, image=global_images1[weather4])
+    if weather5 in global_images1:
+        canvas.itemconfig(image_7, image=global_images1[weather5])
+    if weather6 in global_images1:
+        canvas.itemconfig(image_6, image=global_images1[weather6])
+    global global_images
+    global_images.update({
+        "clear_weather": PhotoImage(file=relative_to_assets("image_15.png")),
+        "cloudy_weather": PhotoImage(file=relative_to_assets("image_2.png")),
+        "partly_cloudy_weather":PhotoImage(file=relative_to_assets("image_8.png")),
+        "rain": PhotoImage(file=relative_to_assets("image_5.png")),
+        "snow": PhotoImage(file=relative_to_assets("image_26.png")),
+        "thunderstorm": PhotoImage(file=relative_to_assets("image_10.png")),
+        "light_rain": PhotoImage(file=relative_to_assets("image_21.png")),
+        "light_snow": PhotoImage(file=relative_to_assets("image_25.png")),
+        "fog": PhotoImage(file=relative_to_assets("image_22.png")),
+        "tornado": PhotoImage(file=relative_to_assets("image_29.png")),
+    })
+    if day_weather1 in global_images:
+        canvas.itemconfig(image_15, image=global_images[day_weather1])
+    if day_weather2 in global_images:
+        canvas.itemconfig(image_2, image=global_images[day_weather2])
+    if day_weather3 in global_images:
+        canvas.itemconfig(image_12, image=global_images[day_weather3])
+    if day_weather4 in global_images:
+        canvas.itemconfig(image_3, image=global_images[day_weather4])
+    if day_weather5 in global_images:
+        canvas.itemconfig(image_10, image=global_images[day_weather5])
+    if day_weather6 in global_images:
+        canvas.itemconfig(image_5, image=global_images[day_weather6])
+    if day_weather7 in global_images:
+        canvas.itemconfig(image_8, image=global_images[day_weather7])
+    
+
+
 
 
 button_1 = Button(
