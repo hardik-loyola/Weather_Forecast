@@ -83,10 +83,10 @@ def save():
                 window_0.destroy()  # Close the input window
                 return  # Exit function after valid input
             else:
-                messagebox.showwarning("Invalid City", "Invalid City. Please enter a proper city name.")
+                messagebox.showwarning("Invalid City", "Invalid City. Please enter a proper city/country name.")
                 break  # Return to allow GUI to refresh
         else:
-            print(f"Error fetching data: {response_lat_lon.status_code}")
+            messagebox.showwarning("Invalid City/Country name","Enter a City/Country name")
             break  # Exit loop in case of non-200 status codes
 
 
@@ -850,12 +850,12 @@ def get_lat_lon(api_key, city):
                 return lat, lon, city  # Return latitude, longitude, and city
             else:
                 # Show popup for invalid city name
-                messagebox.showwarning("Invalid City", "Invalid City. Please enter a proper city name.")
+                messagebox.showwarning("Invalid City", "Invalid input. Please enter a proper city/country name.")
                 # Break the flow to allow user to update city
                 return None  # Return to calling function to handle re-entry
         else:
             # Show popup for API error
-            messagebox.showerror("Error", f"Error fetching data: {response_lat_lon.status_code}")
+            messagebox.showerror("Error", "Enter something")
             return 0, 0, city  # Return default values for failure
 
 
