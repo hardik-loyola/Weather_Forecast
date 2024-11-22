@@ -273,6 +273,7 @@ def week_forecast0(response, weather_descriptions):
 
 
 def search_weather0(city0):
+
     weather_descriptions = {
         "clear_weather": ["clear sky"],
         "cloudy_weather": ["overcast clouds"],
@@ -1265,7 +1266,7 @@ def change_config(time1,weather1,time2,weather2,
     canvas.delete('7th_day')
     canvas.create_text(
         705.0,
-        450.0,
+        440.0,
         anchor="nw",
         text=f"    {day7}\n{week_temp_min7} {week_temp_max7}",
         fill="#221D1D",
