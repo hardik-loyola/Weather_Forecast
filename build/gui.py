@@ -1,3 +1,12 @@
+# Programmers: Hardik and Charles
+# Course: CS151
+# Due Date: 12/9/24
+# Lab Assignment: Final Project
+# Problem Statement:Develop a weather GUI using python
+# Data In: User Input, Openweather API data
+# Data Out: When executed the User opens a Weather program. This weather program uses an image library with descriptions included.
+# Credits: Used online tutorials for Tkinter and Python to understand and develop program. Ideas for program with GUI were found with resources given to us.
+
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Button, PhotoImage, messagebox
 import requests
