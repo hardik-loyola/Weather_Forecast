@@ -10,13 +10,13 @@ ASSETS_PATH = SCRIPT_DIR / "assets"
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
-
+# Sets up window for Weather app
 window_0 = Tk()
 window_0.title("Weather App")
 window_0.geometry("691x417")
 window_0.configure(bg = "#B3CCF1")
 
-
+#Establishes canvas element for window
 canvas = Canvas(
     window_0,
     bg = "#B3CCF1",
@@ -27,6 +27,7 @@ canvas = Canvas(
     relief = "ridge"
 )
 
+#Place rectangle
 canvas.place(x = 0, y = 0)
 canvas.create_rectangle(
     0.0,
@@ -36,6 +37,7 @@ canvas.create_rectangle(
     fill="#7E98C5",
     outline="")
 
+#Place app title
 canvas.create_text(
     11.0,
     16.0,
@@ -45,6 +47,7 @@ canvas.create_text(
     font=("InriaSerif Regular", 40 * -1)
 )
 
+#Add image for search
 entry_image = PhotoImage(
     file=relative_to_assets("entry.png"))
 entry_bg_1 = canvas.create_image(
@@ -66,7 +69,7 @@ entry.place(
 )
 city0=None
 
-
+# Establish API connection and add error checking
 def save():
     global city0
     city0 = entry.get()
@@ -76,6 +79,7 @@ def save():
         url_lat = f'http://api.openweathermap.org/geo/1.0/direct?q={city0}&appid={api_key}'
         response_lat_lon = requests.get(url_lat)
 
+    #Error checking for invalid name entry or network connection to api
         if response_lat_lon.status_code == 200:
             data = response_lat_lon.json()
 
@@ -90,6 +94,7 @@ def save():
             break  # Exit loop in case of non-200 status codes
 
 
+# Add button png
 button_image = PhotoImage(
     file=relative_to_assets("button.png"))
 button = Button(
@@ -105,7 +110,7 @@ button.place(
     width=152.0,
     height=47.0
 )
-
+#Add image for "logo"
 image_image_111 = PhotoImage(
     file=relative_to_assets("image_30.png"))
 image_111 = canvas.create_image(
@@ -120,7 +125,7 @@ image_111 = canvas.create_image(
 window_0.resizable(False, False)
 window_0.mainloop()
 
-
+# Use user entry to get latitude and longitude from API
 def get_lat_lon0(url_lat):
     global city0
     response_lat_lon = requests.get(url_lat)
@@ -134,14 +139,15 @@ def get_lat_lon0(url_lat):
     else:
         return 0, 0
 
-
+# Use API key latitude and longitude to create a request
 def url0(lat, lon, api_key):
     url = f'https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude=minutely,alerts&appid={api_key}&units=imperial'
     response = requests.get(url)
     return response
 
-
+# Get current day information response
 def current0(response):
+    # Only executes if valid
     if response.status_code == 200:
         data = response.json()
         # temperature
@@ -158,10 +164,11 @@ def current0(response):
         sunset = dt.datetime.utcfromtimestamp(sets).strftime('%I:%M %p')
 
         return temp, wind_speed, humidity, sunrise, sunset
+    #Executes if error for debugging process
     else:
         print("Error")
 
-
+#Uses Open weather data to create a forecast in 4 hour intervals
 def hourly0(response, weather_descriptions):
     if response.status_code == 200:
 
@@ -213,7 +220,7 @@ def hourly0(response, weather_descriptions):
         chance_of_rain = str(data['hourly'][0]['pop']) + "%"
         return time1, weather1, time2, weather2, time3, weather3, time4, weather4, time5, weather5, time6, weather6, chance_of_rain, temp1, temp2, temp3, temp4, temp5, temp6, day0
 
-
+# Uses data from API to create a 7 day forecast for the week
 def week_forecast0(response, weather_descriptions):
     if response.status_code == 200:
         data = response.json()
@@ -271,7 +278,7 @@ def week_forecast0(response, weather_descriptions):
         week_temp_min1, week_temp_max1, week_temp_min2, week_temp_max2, week_temp_min3, week_temp_max3, week_temp_min4,
         week_temp_max4, week_temp_min5, week_temp_max5, week_temp_min6, week_temp_max6, week_temp_min7, week_temp_max7)
 
-
+# Gets weather descriptions based on weather in the city
 def search_weather0(city0):
 
     weather_descriptions = {
@@ -296,7 +303,7 @@ def search_weather0(city0):
 
     }
 
-
+    #API key for program
     api_key = 'b5508b18408a1951c9d1e43696eab784'
 
     url_lat = f'http://api.openweathermap.org/geo/1.0/direct?q={city0}&appid={api_key}'
@@ -323,7 +330,7 @@ value = search_weather0(city0)
 
 
 
-
+# Sets up GUI for weather system
 window = Tk()
 window.title("Weather App")
 window.geometry("820x658")
@@ -836,7 +843,7 @@ button_image_1 = PhotoImage(
 
 from tkinter import messagebox  # Import for popup dialogs
 
-
+# Error checking for home page
 def get_lat_lon(api_key, city):
     while True:  # Loop until valid data is received or the user decides to exit
         url_lat = f'http://api.openweathermap.org/geo/1.0/direct?q={city}&appid={api_key}'
@@ -859,14 +866,13 @@ def get_lat_lon(api_key, city):
             messagebox.showerror("Error", "Enter something")
             return 0, 0, city  # Return default values for failure
 
-
+#
 def url1(lat,lon,api_key):
     url = f'https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude=minutely,alerts&appid={api_key}&units=imperial'
     response=requests.get(url)
     return response
 
-
-
+# This following code places the icons in the proper location and organizes the program
 
 def current(response):
         if response.status_code == 200:
@@ -939,7 +945,7 @@ def hourly(response,weather_descriptions):
         chance_of_rain=str(data['hourly'][0]['pop'])+"%"
         return time1,weather1,time2,weather2,time3,weather3,time4,weather4,time5,weather5,time6,weather6,chance_of_rain,temp1,temp2,temp3,temp4,temp5,temp6,day0
 
-
+#Week Forecast data
 def week_forecast(response,weather_descriptions):
     if response.status_code == 200:
         data = response.json()
@@ -1000,7 +1006,7 @@ def week_forecast(response,weather_descriptions):
             week_temp_max4, week_temp_min5, week_temp_max5, week_temp_min6, week_temp_max6, week_temp_min7,
             week_temp_max7)
 
-
+# Searching for weather data
 def search_weather():
     weather_descriptions    = {
         "clear_weather": ["clear sky"],
@@ -1266,7 +1272,7 @@ def change_config(time1,weather1,time2,weather2,
     canvas.delete('7th_day')
     canvas.create_text(
         705.0,
-        440.0,
+        450.0,
         anchor="nw",
         text=f"    {day7}\n{week_temp_min7} {week_temp_max7}",
         fill="#221D1D",
@@ -1326,9 +1332,7 @@ def change_config(time1,weather1,time2,weather2,
         canvas.itemconfig(image_8, image=global_images[day_weather7])
 
 
-
-
-
+#Program is initialed
 
 button_1 = Button(
     image=button_image_1,
